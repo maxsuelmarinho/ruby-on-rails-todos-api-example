@@ -1,12 +1,5 @@
 require 'database_cleaner'
 
-Shoulda::Marchers.configure do |config|
-  config.integrate do |width|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -40,7 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-RSpec.configure do |config|
+RSpec.configure do |config|  
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -67,7 +60,14 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  # config.filter_gems_from_backtrace("gem name")  
+
+  Shoulda::Matchers.configure do |conf|
+    conf.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 
   config.include FactoryBot::Syntax::Methods
 
@@ -76,7 +76,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.arount(:each) do |example|
+  config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
