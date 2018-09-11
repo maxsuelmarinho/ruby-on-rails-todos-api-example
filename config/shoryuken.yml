@@ -1,0 +1,5 @@
+concurrency: 1
+# When a queue gets empty, the queue will be paused for the number of seconds specified in delay
+#delay: 30
+queues:
+  - default

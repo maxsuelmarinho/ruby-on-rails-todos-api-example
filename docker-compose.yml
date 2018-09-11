@@ -1,0 +1,7 @@
+version: '3.1'
+services:
+  aws-sqs-server-mock:
+    image: maxsuelmarinho/aws-sqs-server-mock:1.0.0-alpine3.8
+    container_name: sqs-server
+    ports:
+      - "4576:4576"

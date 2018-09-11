@@ -69,6 +69,8 @@ RSpec.configure do |config|
     end
   end
 
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
+
   config.include RequestSpecHelper, type: :request
 
   config.include FactoryBot::Syntax::Methods
