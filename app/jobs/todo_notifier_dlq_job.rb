@@ -1,5 +1,5 @@
-class TodoNotifierJob < ApplicationJob
-  queue_as :default
+class TodoNotifierDlqJob < ApplicationJob
+  queue_as :dlq
 
   rescue_from ActiveJob::DeserializationError do |ex|
     Shoryuken.logger.error ex
@@ -8,8 +8,7 @@ class TodoNotifierJob < ApplicationJob
 
   def perform(todo)
       p "============================="
-      p "TodoNotifierJob perform..."
+      p "TodoNotifierDlqJob perform..."
       p "============================="
-      raise "error"
   end
 end

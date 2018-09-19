@@ -679,6 +679,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    pg (0.19.0)
     puma (3.12.0)
     rack (2.0.5)
     rack-protection (2.0.3)
@@ -769,18 +770,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk
-  aws-sdk-sqs
+  aws-sdk (~> 3.0.1)
+  aws-sdk-sqs (~> 1.6.0)
   bootsnap (>= 1.1.0)
   byebug
   database_cleaner
   factory_bot_rails (~> 4.0)
   faker
   listen (>= 3.0.5, < 3.2)
+  pg (~> 0.19.0)
   puma (~> 3.11)
   rails (~> 5.2.1)
   rspec-rails (~> 3.5)
-  shoryuken
+  shoryuken (~> 3.2.2)
   shoulda-callback-matchers (~> 1.1.4)
   shoulda-matchers (~> 3.1)
   sidekiq

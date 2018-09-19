@@ -30,9 +30,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'sidekiq'
 
-gem 'shoryuken'
-gem 'aws-sdk'
-gem 'aws-sdk-sqs'
+gem 'shoryuken', "~> 3.2.2"
+gem 'aws-sdk', '~> 3.0.1'
+gem 'aws-sdk-sqs', '~> 1.6.0'
+
+gem 'pg', '~> 0.19.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -34,5 +34,8 @@ module RubyOnRailsTodosApiExample
 
     #config.active_job.queue_adapter = :sidekiq
     config.active_job.queue_adapter = :shoryuken
+
+    config.active_job.queue_name_prefix = "todo-#{Rails.env}"
+    config.active_job.queue_name_delimiter = '-'
   end
 end

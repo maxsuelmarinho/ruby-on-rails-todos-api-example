@@ -9,6 +9,7 @@ class TodosController < ApplicationController
     def create
         @todo = Todo.create!(todo_params)
         TodoNotifierJob.perform_later @todo
+        TodoNotifierWorker.perform_async(@todo.to_json)
         json_response(@todo, :created)
     end
 
@@ -18,7 +19,7 @@ class TodosController < ApplicationController
 
     def update
         @todo.update(todo_params)
-        TodoNotifierJob.set(wait: 30.second).perform_later @todo
+        #TodoNotifierJob.set(wait: 30.second).perform_later @todo
         head :no_content
     end
 
